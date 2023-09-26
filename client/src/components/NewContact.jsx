@@ -3,6 +3,8 @@ import Navbar from './Navbar'
 
 export default function NewContact() {
 
+  const [message, setMessage] = useState(false);
+
   const [newContact, setNewContact] = useState({
     "first_name" : "",
     "last_name" : "",
@@ -15,17 +17,37 @@ export default function NewContact() {
   function handleChange(event){
     const {value, name} = event.target
     setNewContact((preValue) => ({...preValue, [name]: value}));
-
-    console.log(newContact)
   }
 
+  const addNewContact= async (newContact) => {
+    try {
 
+      const {first_name, last_name, email, phone_number, address, image_path} = newContact;
+
+        const body = {first_name, last_name, email, phone_number, address, image_path};
+
+        const response = await fetch("http://localhost:1212", {
+            method : "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+        })
+
+        if(response.ok) {setMessage(true)};
+    } catch (error) {
+        console.error(error.message)
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    addNewContact(newContact);
+  }
 
   return (
     <div>
       <Navbar />
 
-      <form className='new-contact'>
+      <form className='new-contact' onSubmit={handleSubmit}>
         <input
           placeholder='First Name'
           type='text'
@@ -74,7 +96,7 @@ export default function NewContact() {
 
         <button type='submit'>Add</button>
 
-        <p>New contact has been added successfully!</p>
+        <p style={message ? { display: 'block' } : { display: 'none' }}>New contact has been added successfully!</p>
 
       </form>
 
