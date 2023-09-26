@@ -135,3 +135,29 @@ body {
   margin: 2%;
   color: green;
 }
+
+/* Contact Detail Form */
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 7%;
+  margin-top: 15%;
+  align-items: center;
+}
+
+.contact-detail h2 {
+  font-size: 30px;
+}
+
+.contact-detail p {
+  font-size: 18px;
+}
+
+.edit-delete-buttons {
+  margin-top: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
