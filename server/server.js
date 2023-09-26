@@ -7,6 +7,7 @@ const app = express();
 const PORT = 1212;
 
 app.use(cors());
+app.use(express.json()); //req.body
 
 app.get("/", async (req, res) =>  {
     
@@ -16,6 +17,23 @@ app.get("/", async (req, res) =>  {
         console.log(allContacts)
     } catch (error) {
         console.error("Error Message!:", error.message);
+    }
+
+});
+
+app.post("/", async (req, res) =>  {
+    
+    try {
+        const {first_name, last_name, email, phone_number, address, image_path } = req.body;
+
+        const newContact = await db.query (
+            "INSERT INTO contacts (first_name, last_name, email, phone_number, address, image_path) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [first_name, last_name, email, phone_number, address, image_path]
+        );
+
+        res.json(newContact.rows[0])
+        
+    } catch (error) {
+        console.error(error.message)
     }
 
 });
