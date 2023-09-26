@@ -46,7 +46,7 @@ body {
 }
 
 /* Card */
-.card {
+/* .card {
   border-radius: 25px;
   position: relative;
   padding: 25px 15px;
@@ -97,5 +97,65 @@ body {
 .info {
   margin: 20px 0;
   color: #1a7e76;
+} */
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px; /* adjust this value to control spacing between cards */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* Card */
+.card {
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+  background-color: #2c2c2c; /* darker shade for the card background */
+  margin: 50px 50px;
+  height: 250px;
+  box-shadow: 0 2px 5px #111; /* darker shadow */
+  text-align: left;
+  max-width: 400px;
+  min-width: 400px;
+}
+
+.top {
+  border-radius: 25px 25px 0 0;
+  height: 100px;
+  width: 100%;
+  background-color: #1a1a1a; /* slightly lighter shade for the top section */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.name {
+  font-size: 2em;
+  color: #ffffff; /* white text for name */
+  display: flex;
+  flex: 1;
+  margin: 10% 20px 0;
+}
+
+.card img {
+  margin: 30px 20px 0 0;
+}
+
+.circle-img {
+  border-radius: 50%;
+  border: 7px solid #fff;
+  width: 120px;
+  height: 120px;
+}
+
+.bottom {
+  margin-top: 120px;
+}
+
+.info {
+  margin: 20px 0;
+  color: #c1c1c1; /* slightly off-white color for info text for better readability against a dark background */
+}

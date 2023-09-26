@@ -31,10 +31,12 @@ function App() {
   return (
     <div>
       <Navbar />
-      {contacts.length > 0 ? 
-        contacts.map((item) => (
-          <ContactCard key={item.id} contacts = {item} />
-        )) : ` `}
+      <div  className="cards-container">
+        {contacts.length > 0 ? 
+          contacts.map((item) => (
+            <ContactCard key={item.id} contacts = {item} />
+          )) : ` `}
+      </div>
     </div>
   )
 }
