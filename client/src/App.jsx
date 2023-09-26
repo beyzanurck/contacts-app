@@ -33,8 +33,8 @@ function App() {
       <Navbar />
       <div  className="cards-container">
         {contacts.length > 0 ? 
-          contacts.map((item) => (
-            <ContactCard key={item.id} contacts = {item} />
+          contacts.map((item, index) => (
+            <ContactCard key={index} contacts = {item} />
           )) : ` `}
       </div>
     </div>
