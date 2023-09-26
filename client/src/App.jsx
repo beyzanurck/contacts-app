@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import Navbar from './components/Navbar'
+import ContactCard from './components/ContactCard';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
 
       const allContacts = await response.json();
       setContacts(allContacts)
-      console.log(contacts)
+      console.log(contacts[0])
 
     } catch (error) {
       console.log(error.message);
@@ -30,7 +31,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      {contacts.length > 0 ? contacts[0].first_name : ` `}
+      {contacts.length > 0 ? <ContactCard contacts = {contacts[0]} /> : ` `}
     </div>
   )
 }
