@@ -5,7 +5,9 @@ export default function ContactCard(props) {
   return (
     <div className="card">
       <div className="top">
-        <Link to={`/contact-detail/${props.contacts.id}`}> 
+        <Link to={`/contact-detail/${props.contacts.id}`}
+            state= {{"person" : props.contacts}}
+          >
           <h2 className="name">{props.contacts.first_name} {props.contacts.last_name}</h2>
         </Link>
         <img className="circle-img" src={props.contacts.image_path} alt="avatar_img" />
