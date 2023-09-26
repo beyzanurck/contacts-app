@@ -31,7 +31,10 @@ function App() {
   return (
     <div>
       <Navbar />
-      {contacts.length > 0 ? <ContactCard contacts = {contacts[0]} /> : ` `}
+      {contacts.length > 0 ? 
+        contacts.map((item) => (
+          <ContactCard key={item.id} contacts = {item} />
+        )) : ` `}
     </div>
   )
 }

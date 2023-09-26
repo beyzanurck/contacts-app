@@ -4,7 +4,7 @@ export default function ContactCard(props) {
   return (
     <div className="card">
       <div className="top">
-        <h2 className="name">{props.contacts.first_name}</h2>
+        <h2 className="name">{props.contacts.first_name} {props.contacts.last_name}</h2>
         <img className="circle-img" src={props.contacts.image_path} alt="avatar_img" />
       </div>
       <div className="bottom">
