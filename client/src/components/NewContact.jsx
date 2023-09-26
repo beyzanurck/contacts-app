@@ -12,10 +12,17 @@ export default function NewContact() {
     "image_path" : ""
   })
 
-  function handleChange(){}
+  function handleChange(event){
+    const {value, name} = event.target
+    setNewContact((preValue) => ({...preValue, [name]: value}));
+
+    console.log(newContact)
+  }
+
+
 
   return (
-    <div new-contact-container>
+    <div>
       <Navbar />
 
       <form className='new-contact'>
