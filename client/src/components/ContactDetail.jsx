@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 
 export default function ContactDetail(props) {
   
@@ -8,6 +8,17 @@ export default function ContactDetail(props) {
 
   // console.log(state)
   // console.log(state.person.first_name)
+
+  const deleteContact = async (id) => {
+    try {
+      const deleteContact = await fetch(`http://localhost:1212/${id}`, {
+        method: "DELETE"
+      });
+
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
 
   return (
     <div className='contact-detail'>
@@ -22,7 +33,9 @@ export default function ContactDetail(props) {
 
       <div className='edit-delete-buttons'>
         <button>Edit</button>
-        <button>Delete</button>
+        <Link to="/" >
+          <button onClick={() => {deleteContact(contactId)}}>Delete</button>
+        </Link>
       </div>
     
     </div>
