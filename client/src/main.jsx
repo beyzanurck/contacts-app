@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 
 import './index.css'
+import ContactDetail from './components/ContactDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/contact-detail/:contactId",
+    element: <ContactDetail />,
   },
 ]);
 
