@@ -38,4 +38,17 @@ app.post("/", async (req, res) =>  {
 
 });
 
+app.delete('/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+        const deleteContact= await db.query("DELETE FROM contacts WHERE id = $1", [id]
+        );
+
+        res.json("The contact was deleted!");
+
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
 app.listen(PORT, () => console.log(`HELLOO! Server running on Port http://localhost:${PORT}`));
