@@ -51,4 +51,23 @@ app.delete('/:id', async (req, res) => {
     }
 })
 
+app.put('/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const {first_name, last_name, email, phone_number, address, image_path } = req.body;
+
+      const editedContact = await db.query(
+        "UPDATE contacts SET first_name = $1, last_name = $2, email = $3, phone_number = $4, address = $5, image_path = $6 WHERE id = $7 RETURNING *",
+        [first_name, last_name, email, phone_number, address, image_path, id]
+      );
+  
+      //res.json(editedContact.rows[0]);
+      res.json("Event was updated!");
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    }  
+});
+
 app.listen(PORT, () => console.log(`HELLOO! Server running on Port http://localhost:${PORT}`));
