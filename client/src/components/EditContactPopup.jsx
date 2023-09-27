@@ -21,6 +21,21 @@ export default function EditContactPopup({show , onClose, contact}) {
   }
 
   const editTheContact= async (editContact) => {
+    try {
+
+      const {first_name, last_name, email, phone_number, address, image_path} = editContact;
+
+      const body = {first_name, last_name, email, phone_number, address, image_path};
+
+      const response = await fetch(`http://localhost:1212/${contact.person.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      })
+
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   function handleSubmit(event) {
@@ -41,7 +56,7 @@ export default function EditContactPopup({show , onClose, contact}) {
 
         <Modal.Body>
 
-          <form className="form-editEvent" onSubmit={handleSubmit}>
+          <form className="form-editEvent">
 
             <input
               name="first_name"
@@ -78,20 +93,19 @@ export default function EditContactPopup({show , onClose, contact}) {
               value={editContact.image_path}
               onChange={handleChange}
             />
-
           </form>
                 
         </Modal.Body>
 
         <Modal.Footer>
 
-        <Button variant="secondary" onClick={onClose}>
-            Close
-        </Button>
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
+                  Save
+          </Button>
 
-        <Button variant="primary" type="submit">
-            Save
-        </Button>
+          <Button variant="secondary" onClick={onClose}>
+            Close
+          </Button>
 
         </Modal.Footer>
 
