@@ -1,0 +1,102 @@
+import React from 'react'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import { useEffect, useState } from 'react';
+
+export default function EditContactPopup({show , onClose, contact}) {
+
+  const [editContact, setEditContact] = useState({
+    "first_name" : contact.person.first_name,
+    "last_name" : contact.person.last_name,
+    "email" : contact.person.email,
+    "phone_number": contact.person.phone_number,
+    "address": contact.person.address,
+    "image_path" : contact.person.image_path
+  })
+
+  function handleChange (event) {
+
+    const { value, name } = event.target;
+    setEditContact((prevValue) => ({ ...prevValue, [name]: value }));
+  }
+
+  const editTheContact= async (editContact) => {
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    editTheContact(editContact);
+  }
+
+
+  return (
+    <div>
+
+      <Modal show={show} onHide={onClose} size="lg">
+
+        <Modal.Header closeButton>
+        <Modal.Title>Edit Person</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+
+          <form className="form-editEvent" onSubmit={handleSubmit}>
+
+            <input
+              name="first_name"
+              onChange={handleChange}
+              value={editContact.first_name}
+              placeholder="First Name"
+            />
+
+            <input
+              name="last_name"
+              onChange={handleChange}
+              value={editContact.last_name}
+              placeholder="Last Name"
+            />
+
+            <input
+            placeholder='Phone Number'
+            type='tel'
+            name='phone_number'
+            value={editContact.phone_number}
+            onChange={handleChange}
+            />
+
+            <textarea
+              placeholder='Adress'
+              name='address'
+              value={editContact.address}
+              onChange={handleChange}
+            />
+
+            <textarea 
+              placeholder="Image URL"
+              name="image_path" 
+              value={editContact.image_path}
+              onChange={handleChange}
+            />
+
+          </form>
+                
+        </Modal.Body>
+
+        <Modal.Footer>
+
+        <Button variant="secondary" onClick={onClose}>
+            Close
+        </Button>
+
+        <Button variant="primary" type="submit">
+            Save
+        </Button>
+
+        </Modal.Footer>
+
+      </Modal>
+      
+    </div>
+  )
+}

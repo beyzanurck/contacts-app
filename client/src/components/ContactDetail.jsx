@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom';
+import EditContactPopup from './EditContactPopup';
 
-export default function ContactDetail(props) {
+export default function ContactDetail() {
   
   const { contactId } = useParams();
   let { state } = useLocation();
+
+  const [show, setShow] = useState(false)
 
   // console.log(state)
   // console.log(state.person.first_name)
@@ -32,11 +35,20 @@ export default function ContactDetail(props) {
       <p>{state.person.address}</p>
 
       <div className='edit-delete-buttons'>
-        <button>Edit</button>
+
+        <button onClick={() => {setShow(true)}}>Edit</button>
+
         <Link to="/" >
           <button onClick={() => {deleteContact(contactId)}}>Delete</button>
         </Link>
+
       </div>
+
+      <EditContactPopup 
+        show ={show} 
+        onClose={() => {setShow(false)}}
+        contact = {state}
+      />
     
     </div>
   )
