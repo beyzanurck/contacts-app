@@ -1,9 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-export default function EditContactPopup({show , onClose, contact}) {
+export default function EditContactPopup({show , onClose, contact, onContactChange}) {
 
   const [editContact, setEditContact] = useState({
     "first_name" : contact.person.first_name,
@@ -32,6 +32,12 @@ export default function EditContactPopup({show , onClose, contact}) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       })
+
+      if (response.ok) {
+        onContactChange(editContact);
+      } else {
+        console.error('Failed to update the contact');
+      }
 
     } catch (error) {
       console.error(error.message)

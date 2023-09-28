@@ -24,6 +24,15 @@ function App() {
     }
   }
 
+  // function update(editedContact) {
+  //   setContacts((prevContacts) => 
+  //     prevContacts.map((contact) => 
+  //       contact.id === editedContact.id ? editedContact : contact
+  //     )
+  //   );
+  // }
+  
+
   useEffect(() => {
     getContacts();
   }, []);
@@ -34,8 +43,10 @@ function App() {
       <div  className="cards-container">
         {contacts.length > 0 ? 
           contacts.map((item, index) => (
-            <ContactCard key={index} contacts = {item} />
+            <ContactCard key={index} contacts = {item}  />
           )) : ` `}
+
+              {/* onUpdate = {update} */}
       </div>
     </div>
   )

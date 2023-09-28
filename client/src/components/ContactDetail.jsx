@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom';
 import EditContactPopup from './EditContactPopup';
 
@@ -7,10 +7,12 @@ export default function ContactDetail() {
   const { contactId } = useParams();
   let { state } = useLocation();
 
+  const [personDetail, setPersonDetail] = useState(state.person);
+
   const [show, setShow] = useState(false)
 
-  // console.log(state)
-  // console.log(state.person.first_name)
+  console.log(state)
+  console.log(state.person.first_name)
 
   const deleteContact = async (id) => {
     try {
@@ -23,8 +25,16 @@ export default function ContactDetail() {
     }
   }
 
+  useEffect(() => {
+    if (state) {
+      state.person = personDetail;
+    }
+  }, [personDetail, state]);
+  
+
   return (
     <div className='contact-detail'>
+      
 
       <img className="circle-img" src={state.person.image_path} alt="avatar_img" />
       
@@ -42,15 +52,18 @@ export default function ContactDetail() {
           <button onClick={() => {deleteContact(contactId)}}>Delete</button>
         </Link>
 
-      </div>
+      </div> 
 
       <EditContactPopup 
         show ={show} 
         onClose={() => {setShow(false)}}
         contact = {state}
+        onContactChange={(edited) => setPersonDetail(edited)}
       />
-    
     </div>
   )
 }
+
+
+
 
