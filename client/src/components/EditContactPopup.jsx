@@ -25,7 +25,7 @@ export default function EditContactPopup({show , onClose, contact, onContactChan
 
       const {first_name, last_name, email, phone_number, address, image_path} = editContact;
 
-      const body = {first_name, last_name, email, phone_number, address, image_path};
+      const body = { ...editContact };
 
       const response = await fetch(`http://localhost:1212/${contact.person.id}`, {
         method: "PUT",
