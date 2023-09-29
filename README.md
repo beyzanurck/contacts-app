@@ -17,6 +17,8 @@
 | concurrently 	| eact-router-dom 	|          	|
 | nodemon      	|                 	|          	|
  
+### Instructions: 
+https://docs.google.com/document/d/1VQ62D_BoJh1kr4tELq_BYEKrNbMDLsiBppT1FyCxIpI/edit#heading=h.yrxzjkeehaog
 
 ![Contact App Demo](contactApp.gif)
 
