@@ -77,7 +77,7 @@ app.put('/:id', async (req, res) => {
 
     } catch(error){
         console.log(error);
-        return res.status(400).json({error});
+        res.status(400).json({error});
     }  
 });
 
