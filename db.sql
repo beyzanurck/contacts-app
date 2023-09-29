@@ -13,7 +13,10 @@ CREATE DATABASE contactapp;
 -- View all databases
 \l
 
--- Connect to the db
+-- Quit current db
+\q
+
+-- Connect to the project db
 psql contactapp;
 
 -- Create table
