@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom';
 import EditContactPopup from './EditContactPopup';
 
 export default function ContactDetail() {
+
+  const navigate = useNavigate(); 
   
   const { contactId } = useParams();
   let { state } = useLocation();
@@ -48,9 +50,7 @@ export default function ContactDetail() {
 
         <button onClick={() => {setShow(true)}}>Edit</button>
 
-        <Link to="/" >
-          <button onClick={() => {deleteContact(contactId)}}>Delete</button>
-        </Link>
+        <button onClick={() => { deleteContact(contactId); navigate('/'); }}>Delete</button>
 
       </div> 
 
