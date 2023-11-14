@@ -54,6 +54,9 @@ export default function NewContact() {
           name='first_name'
           value={newContact.first_name}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <input
@@ -62,6 +65,9 @@ export default function NewContact() {
           name='last_name'
           value={newContact.last_name}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <input
@@ -70,6 +76,9 @@ export default function NewContact() {
           name='email'
           value={newContact.email}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <input
@@ -78,6 +87,9 @@ export default function NewContact() {
           name='phone_number'
           value={newContact.phone_number}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <textarea
@@ -85,6 +97,9 @@ export default function NewContact() {
           name='address'
           value={newContact.address}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <textarea 
@@ -92,6 +107,9 @@ export default function NewContact() {
           name="image_path" 
           value={newContact.image_path}
           onChange={handleChange}
+          required
+          minLength="5"
+          maxLength="20"
         />
 
         <button type='submit'>Add</button>
