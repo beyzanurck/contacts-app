@@ -24,7 +24,7 @@ https://docs.google.com/document/d/1VQ62D_BoJh1kr4tELq_BYEKrNbMDLsiBppT1FyCxIpI/
 
 ## Project Setup
 
-1. The data for this project can be found in db.sql. If you have PostgreSQL installed on your local machine, you can follow the instructions inside db.sql to set up the database.
+1. The data for this project can be found in db.instruction.sql. If you have PostgreSQL installed on your local machine, you can follow the instructions inside db.sql to set up the database.
 
 2. Go to your source directory in your terminal and run the command: `git clone https://github.com/beyzanurck/contacts-app.git`.
 
